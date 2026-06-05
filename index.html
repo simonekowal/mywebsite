@@ -3,57 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Live Website</title>
+    <title>Simone Kowal | Portfolio</title>
+    <!-- Importing Google Fonts for a sleek, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Base Variables & Reset */
+        :root {
+            --bg-color: #000000;
+            --text-main: #ffffff;
+            --accent-blue: #0A1931;
+            --highlight-blue: #150E56;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 300;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #4da8da;
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
+            align-items: center;
             text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 90%;
+            background: linear-gradient(135deg, var(--bg-color) 40%, var(--accent-blue) 100%);
+            padding: 0 20px;
         }
-        h1 {
-            color: #2c3e50;
-            margin-top: 0;
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
         }
-        p {
-            font-size: 1.1em;
-            color: #666;
-            line-height: 1.5;
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            color: #cccccc;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
         }
-        .button {
+
+        /* Content Sections */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--highlight-blue);
             display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
+            padding-bottom: 10px;
         }
-        .button:hover {
-            background-color: #2980b9;
+
+        /* Grid Layout for Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Styling the Cards */
+        .card {
+            background-color: var(--accent-blue);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(21, 14, 86, 0.8);
+            background-color: var(--highlight-blue);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #b3b3b3;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--accent-blue);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Website</h1>
-        <p>This site is live, fast, and hosted entirely for free using modern web deployment.</p>
-        <a href="#" class="button">Learn More</a>
-    </div>
+
+    <nav>
+        <div class="logo">SK.</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#music">Music</a></li>
+        </ul>
+    </nav>
+
+    <header id="about">
+        <h1>Simone Kowal</h1>
+        <p>Bridging the gap between robust Cyber Security implementations and professional Music Production.</p>
+    </header>
+
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Forth Valley College</h3>
+                <p><strong>HND Cyber Security</strong></p>
+                <p>Focused on advanced digital forensics, penetration testing, and practical network analysis to secure modern infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Technical Projects</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Kelpies Enterprise Trust</h3>
+                <p>Executed a complex cybersecurity implementation focusing on Ubuntu server configurations, vulnerability analysis, and securing wireless networks against exploitation.</p>
+            </div>
+            <div class="card">
+                <h3>Northbridge Solutions CSIRT</h3>
+                <p>Designed a comprehensive Computer Security Incident Response Team framework, defining core roles and escalation paths for 24/7 organizational security operations.</p>
+            </div>
+            <div class="card">
+                <h3>C++ Storage Metrics App</h3>
+                <p>Developed an application through the complete software development lifecycle (Analysis, Design, Coding, Testing) to successfully process and analyze user-defined file sizes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="music">
+        <h2 class="section-title">Audio & Production</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Modern Pop & Cinematic Composition</h3>
+                <p>Producing diverse audio soundscapes using FL Studio, ranging from modern, professional retro-pop tracks to complex, dark orchestral string arrangements and choir samples.</p>
+            </div>
+            <div class="card">
+                <h3>Visual Branding</h3>
+                <p>Directing the visual aesthetic for single releases, ensuring cover art meets a sleek, modern, and professional standard that reflects the tone of the music.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Simone Kowal. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
